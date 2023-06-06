@@ -51,3 +51,73 @@ describe('Validaciones isLeapYear', () => {
     expect(() => isLeapYear('Hola')).toThrow('El argumento debe ser un número');
   });
 });
+
+
+
+//1.3
+
+
+
+const { adn } = require("../1-3.js");
+
+describe("Validaciones ADN", () => {
+  test("", () => {
+    expect(adn("")).toBe("");
+    expect(adn("CTAGGGA")).toBe("CTAG");
+  });
+});
+
+
+
+
+//1.4
+
+
+// sumPositiveNumbers.test.js
+const sumPositiveNumbers = require('../1-4.js');
+
+test('should return the sum of positive numbers in the array', () => {
+  expect(sumPositiveNumbers([1, -2, 3, '4', 'abc'])).toBe(8);
+  expect(sumPositiveNumbers([-1, -2, -3])).toBe(0);
+  expect(sumPositiveNumbers(['1', '2', '3'])).toBe(6);
+  expect(sumPositiveNumbers([])).toBe(0);
+});
+
+test('should handle non-numeric values gracefully', () => {
+  expect(sumPositiveNumbers(['abc', 'def', 'xyz'])).toBe(0);
+  expect(sumPositiveNumbers([null, undefined])).toBe(0);
+  expect(sumPositiveNumbers([true, false])).toBe(0);
+});
+
+
+
+
+//1.5
+
+const { indicePrimerLetraRepe } = require("../1-5.js");
+
+describe("test para devolver indice de primer letra repetida", () => {
+  test("no ingresa nada", () => {
+    expect(indicePrimerLetraRepe("")).toBe(-1);
+  });
+
+  test("ignora espacio", () => {
+    expect(indicePrimerLetraRepe("a    a")).toBe(0);
+  });
+
+  test("ingreso un nro", () => {
+    expect(indicePrimerLetraRepe(25)).toBe("debe ingresar una cadena");
+  });
+
+  test("ingreso un vector", () => {
+    expect(indicePrimerLetraRepe(["hola como estas"])).toBe("debe ingresar una cadena");
+  });
+
+  test("no es sensible a mayuscula o minuscula", () => {
+    expect(indicePrimerLetraRepe("UnAamarra")).toBe(2);
+  });
+
+  test("no se repite", () => {
+    expect(indicePrimerLetraRepe("noserepite")).toBe(-1);
+  });
+});
