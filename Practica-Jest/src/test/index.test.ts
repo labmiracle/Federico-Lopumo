@@ -121,3 +121,102 @@ describe("test para devolver indice de primer letra repetida", () => {
     expect(indicePrimerLetraRepe("noserepite")).toBe(-1);
   });
 });
+
+
+//1.6
+
+const findMaxConsecutiveOnes = require('../1-6.js');
+
+describe('findMaxConsecutiveOnes', () => {
+  test('returns the maximum number of consecutive 1s in the matrix', () => {
+    const matrix1 = [[1, 1, 0, 1, 1, 1]];
+    expect(findMaxConsecutiveOnes(matrix1)).toBe(3);
+
+    const matrix2 = [[1, 0, 1, 1, 0, 1, 1, 1]];
+    expect(findMaxConsecutiveOnes(matrix2)).toBe(3);
+
+    const matrix3 = [[1, 1, 1, 0, 0, 1, 1, 1, 1]];
+    expect(findMaxConsecutiveOnes(matrix3)).toBe(4);
+  });
+
+  test('returns -1 if there is any value other than 0 or 1 in the matrix', () => {
+    const matrix = [[1, 1, 0, 2, 1, 1]];
+    expect(findMaxConsecutiveOnes(matrix)).toBe(-1);
+  });
+});
+
+
+//1.7
+
+const lookup = require('../1-7.js');
+
+describe('lookup()', () => {
+  it("lookup(<login>, 'likes') should return likes for the specified user.", () => {
+    const actual = lookup('norvig', 'likes');
+    const expected = ['AI', 'Search', 'NASA', 'Mars'];
+    expect(actual).toEqual(expected);
+  });
+
+  it("lookup(<login>, 'lastName') should return the last name for the specified user", () => {
+    const actual = lookup('knuth', 'lastName');
+    const expected = 'Knuth';
+    expect(actual).toEqual(expected);
+  });
+
+  it('with unknown user should throw an error with the correct message', () => {
+    expect(() => {
+      lookup('nobody', 'likes');
+    }).toThrow(/Could not find user/);
+  });
+
+  it('with unknown property should throw an error with the correct message', () => {
+    expect(() => {
+      lookup('mfowler', 'noprop');
+    }).toThrow(/Could not find property/);
+  });
+});
+
+
+
+
+
+// 1.8
+
+const { setPrice, addToCart } = require('../1-8.js');
+
+describe('setPrice()', () => {
+  it('should set the price in the given item object, immutably.', () => {
+    const item = {
+      name: 'test',
+      price: 30,
+    };
+    const copy = { ...item };
+
+    const actual = setPrice(item, 50);
+    const expected = {
+      name: 'test',
+      price: 50,
+    };
+
+    expect(actual).toEqual(expected);
+    expect(item).toEqual(copy);
+  });
+});
+
+describe('addToCart()', () => {
+  it('should add item to cart, immutably', () => {
+    const originalCart = [];
+    const item = {
+      name: 'Toy',
+      price: 30,
+    };
+    const copy = [...originalCart];
+
+    const actual = addToCart(originalCart, item);
+    const expected = [item];
+
+    expect(actual).toEqual(expected);
+    expect(originalCart).toEqual(copy);
+  });
+});
+
