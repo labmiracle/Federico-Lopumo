@@ -1,0 +1,27 @@
+@mixin prefix-margin-padding($margin, $padding) {
+    // Agregar prefijos de proveedor
+    -webkit-margin: $margin;
+    -moz-margin: $margin;
+    -ms-margin: $margin;
+    -o-margin: $margin;
+    margin: $margin;
+  
+    -webkit-padding: $padding;
+    -moz-padding: $padding;
+    -ms-padding: $padding;
+    -o-padding: $padding;
+    padding: $padding;
+  }
+  
+  @mixin border-properties($border-style, $border-color, $border-width) {
+    border-style: $border-style;
+    border-color: $border-color;
+    border-width: $border-width;
+  }
+  
+  // Ejemplo de uso del mixin
+  .my-element {
+    @include prefix-margin-padding(10px, 20px);
+    @include border-properties(solid, #000000, 1px);
+  }
+  

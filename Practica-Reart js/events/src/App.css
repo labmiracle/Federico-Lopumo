@@ -1,0 +1,21 @@
+.events {
+  display: grid;
+  place-items: center;
+  margin: rem;
+}
+
+.container button {
+  background-color: indigo;
+  color: white;
+  border: none;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.input-styles {
+  margin-top: 3rem;
+}
+
+.select-styles {
+  margin-top: 3rem;
+}
